@@ -1,5 +1,5 @@
 class Solution {
-    int count =0;
+    int count=0;
     public void mergeSort(int[] nums){
         int n = nums.length;
         if(n==1) return;
@@ -9,12 +9,12 @@ class Solution {
         for(int i=0;i<n/2;i++){
             a[i] = nums[i];
         }
-        for(int i=0;i<n-n/2;i++){
+        for(int i = 0;i<n-n/2;i++){
             b[i] = nums[i+n/2];
         }
         mergeSort(a);
         mergeSort(b);
-        countPairs(a,b,c);
+        countPair(a,b);
         merge(a,b,c,nums);
     }
     public void merge(int[] a, int[] b, int[] c,int[] nums){
@@ -29,18 +29,17 @@ class Solution {
             nums[p] = c[p];
         }
     }
-    public void countPairs(int[] a, int[] b,int[] c){
+    public void countPair(int[] a, int[] b){
         int j=0;
         for(int i=0;i<a.length;i++){
             while(j<b.length && (long)a[i] > 2 * (long)b[j]){
                 j++;
-                //count++;
             }
             count += j;
         }
     }
     public int reversePairs(int[] nums) {
-        mergeSort(nums);
-        return count;
+       mergeSort(nums);
+       return count; 
     }
 }
